@@ -7,18 +7,31 @@
 oneway(formula, data)
 }
 \arguments{
-\item{formula}{an object of class formula relating the dependent variable
-to the grouping variable.}
+\item{formula}{an object of class formula, relating the dependent
+variable to the grouping variable}
 
-\item{data}{a data frame containing the variables in the model.}
+\item{data}{a data frame contain the variables in the model.}
 }
 \value{
-a list with 2 elements.
+a list with 2 elements:
+\item{oneway}{a list with the lm results}
+\item{summarystats}{a data frame with the summary statistics}
 }
 \description{
-oneway computes a one-way analysis of variance
-and includes group level summary statistics
+\code{oneway} computes a one-way analysis of variance
+and inclues group level summary statistics.
+}
+\details{
+This function computes a standard one-way ANOVA, means,
+and standard deviations. Missing values are handled via
+listwise deletion.
 }
 \examples{
-mileage <- oneway(mpg ~ cyl, mtcars)
+mileage <- oneway(hwy ~ class, cars)
+summary(mileage)
+mileage
+plot(mileage)
+}
+\author{
+Rob Kabacoff \href{mailto:rkabacoff@wesleyan.edu}{rkabacoff@wesleyan.edu}
 }
